@@ -1,258 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ocean Peak | Private Yacht Charters Tenerife</title>
-<style>
-body, html{
-  margin:0;
-  padding:0;
-  font-family:Arial, Helvetica, sans-serif;
-  scroll-behavior:smooth;
-  color:white;
-  background:#0b0f14;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ocean Peak | Private Yacht Charters Tenerife</title>
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* NAVBAR */
-.navbar{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:10;
-  padding:15px 40px; /* чуть потоньше */
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  transition:background 0.5s, padding 0.3s;
-}
-.navbar.scrolled{
-  background:rgba(11,15,20,0.95);
-  padding:10px 40px;
-}
-.logo img{
-  height:100px;
-  transition: height 0.3s;
-}
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #0b0f14;
+      color: #fff;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
 
-/* BURGER MENU */
-.menu-button{
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  width:40px;
-  height:30px;
-  cursor:pointer;
-  z-index:20; /* выше видео */
-}
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      transition: background 0.3s, padding 0.3s;
+    }
 
-.menu-button span{
-  display:block;
-  height:4px;
-  background:#d4af37; /* или белый */
-  border-radius:2px;
-  transition:all 0.5s;
-}
-.menu-button.open span:nth-child(1){
-  transform:rotate(45deg) translate(5px,5px);
-}
-.menu-button.open span:nth-child(2){
-  opacity:0;
-}
-.menu-button.open span:nth-child(3){
-  transform:rotate(-45deg) translate(5px,-5px);
-}
+    .navbar.scrolled {
+      background: rgba(11, 15, 20, 0.95);
+      backdrop-filter: blur(5px);
+      padding: 10px 40px;
+    }
 
-/* MENU OVERLAY */
-.menu-overlay{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(11,15,20,0.95);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:50px;
-  font-size:40px;
-  z-index:20;
-  transform:translateY(-100%);
-  transition:transform 0.5s;
-}
-.menu-overlay a{
-  color:white;
-  font-family:serif;
-  letter-spacing:3px;
-  transition:opacity 0.3s;
-}
-.menu-overlay a:hover{
-  opacity:0.7;
-}
-.menu-overlay.show{
-  transform:translateY(0);
-}
+    .logo img {
+      height: 80px;
+      transition: height 0.3s;
+      filter: brightness(1.2);
+    }
 
-/* HERO VIDEO */
-.hero-video{
-  position:relative;
-  height:100vh;
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-.hero-video video{
-  position:absolute;
-  top:50%;
-  left:50%;
-  min-width:100%;
-  min-height:100%;
-  transform:translate(-50%, -50%);
-  object-fit:cover;
-  transition: transform 0.5s ease;
-}
-.hero-video:hover video{
-  transform:translate(-50%, -50%) scale(1.05);
-}
-.overlay{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.45);
-}
-.hero-content{
-  position:relative;
-  z-index:2;
-  max-width:900px;
-}
-.hero-title{
-  font-size:60px;
-  font-family:serif;
-  letter-spacing:3px;
-  color:#d4af37;
-  margin-bottom:20px;
-  text-shadow:0 2px 20px rgba(0,0,0,0.7);
-}
-.hero-subtitle{
-  font-size:24px;
-  margin-bottom:30px;
-}
-.button{
-  padding:15px 30px;
-  border-radius:30px;
-  background:#d4af37;
-  color:black;
-  font-weight:bold;
-  font-size:18px;
-  text-decoration:none;
-  transition: all 0.3s;
-}
-.button:hover{
-  box-shadow:0 0 20px #d4af37;
-  transform:scale(1.05);
-}
+    /* Burger menu */
+    .menu-button {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      z-index: 200;
+    }
 
-/* YACHTS */
-.yacht-section{
-  padding:60px 0;
-}
-.yacht-card{
-  position:relative;
-  height:65vh;
-  margin-bottom:80px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  overflow:hidden;
-  border-radius:15px;
-}
-.yacht-card video{
-  position:absolute;
-  top:50%;
-  left:50%;
-  width:auto;
-  height:80%;
-  min-width:100%;
-  min-height:100%;
-  object-fit:cover;
-  filter:brightness(0.5);
-  transform:translate(-50%, -50%);
-  transition:transform 0.6s;
-  border-radius:15px;
-}
-.yacht-card:hover video{
-  transform:translate(-50%, -50%) scale(1.05);
-}
-.yacht-content{
-  position:relative;
-  z-index:2;
-  max-width:700px;
-}
-.yacht-title{
-  font-size:50px;
-  font-family:serif;
-  color:#d4af37;
-  margin-bottom:20px;
-}
-.yacht-subtitle{
-  font-size:20px;
-  margin-bottom:30px;
-  line-height:1.6;
-}
+    .menu-button span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: #d4af37;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
 
-/* CONTACT SECTION */
-.contact-section{
-  padding:80px 20px;
-  background:#0b0f14;
-  text-align:center;
-}
-.contact-section h2{
-  color:#d4af37;
-  font-family:serif;
-  margin-bottom:20px;
-}
-.contact-section p{
-  margin:5px 0;
-  font-size:18px;
-}
-.contact-map{
-  margin-top:40px;
-  border:5px solid #d4af37;
-  border-radius:15px;
-  overflow:hidden;
-}
+    .menu-button.open span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
 
-/* WHATSAPP */
-.floating-whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  color:white;
-  border-radius:50%;
-  width:60px;
-  height:60px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:30px;
-  box-shadow:0 4px 8px rgba(0,0,0,0.3);
-  z-index:1000;
-}
-</style>
+    .menu-button.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-button.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    /* Menu overlay */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(11, 15, 20, 0.98);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      z-index: 150;
+      transform: translateY(-100%);
+      transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .menu-overlay.show {
+      transform: translateY(0);
+    }
+
+    .menu-overlay a {
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      text-decoration: none;
+      letter-spacing: 4px;
+      transition: color 0.3s;
+    }
+
+    .menu-overlay a:hover {
+      color: #d4af37;
+    }
+
+    @media (max-width: 768px) {
+      .menu-overlay a {
+        font-size: 2rem;
+      }
+    }
+
+    /* Hero Video */
+    .hero-video {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-video video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 0.5s ease;
+      object-fit: cover;
+    }
+
+    .hero-video:hover video {
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 10vw, 5rem);
+      color: #d4af37;
+      margin-bottom: 20px;
+      text-shadow: 0 5px 15px rgba(0,0,0,0.7);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 40px;
+      background: #d4af37;
+      color: #0b0f14;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 50px;
+      letter-spacing: 1px;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .button:hover {
+      background: transparent;
+      color: #d4af37;
+      border-color: #d4af37;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    }
+
+    /* Yachts Section */
+    .yacht-section {
+      padding: 80px 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .yacht-card {
+      position: relative;
+      height: 70vh;
+      margin-bottom: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .yacht-card video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 0.6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+      object-fit: cover;
+    }
+
+    .yacht-card:hover video {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .yacht-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 30px;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(5px);
+      border-radius: 20px;
+      margin: 20px;
+    }
+
+    .yacht-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #d4af37;
+      margin-bottom: 15px;
+    }
+
+    .yacht-subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .yacht-details {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 25px;
+      font-size: 1rem;
+    }
+
+    .yacht-details span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .yacht-details i {
+      color: #d4af37;
+    }
+
+    @media (max-width: 768px) {
+      .yacht-card {
+        height: 60vh;
+      }
+      .yacht-details {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 80px 20px;
+      background: #0b0f14;
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      font-family: 'Playfair Display', serif;
+      color: #d4af37;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2rem;
+    }
+
+    .contact-item i {
+      color: #d4af37;
+      font-size: 1.5rem;
+    }
+
+    .contact-map {
+      max-width: 1200px;
+      margin: 0 auto;
+      border: 3px solid #d4af37;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .contact-map iframe {
+      display: block;
+      width: 100%;
+      height: 400px;
+    }
+
+    /* Floating WhatsApp */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      z-index: 99;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #05080c;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #d4af37;
+      text-decoration: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;
+      }
+      .logo img {
+        height: 60px;
+      }
+      .contact-info {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header class="navbar" id="navbar">
   <div class="logo">
-    <img src="logo.png" alt="Ocean Peak">
+    <img src="logo.png" alt="Ocean Peak" loading="lazy">
   </div>
   <div class="menu-button" id="burger">
     <span></span>
@@ -271,6 +416,8 @@ body, html{
 <section class="hero-video">
   <video autoplay muted loop playsinline poster="hero_poster.jpg">
     <source src="all_boats.mp4" type="video/mp4">
+    <!-- Fallback text if video not supported -->
+    Your browser does not support the video tag.
   </video>
   <div class="overlay"></div>
   <div class="hero-content">
@@ -282,6 +429,7 @@ body, html{
 
 <!-- YACHTS SECTION -->
 <section class="yacht-section" id="yachts">
+  <!-- Lady Sunshine -->
   <div class="yacht-card">
     <video autoplay muted loop playsinline poster="lady_1.jpg">
       <source src="lady_sunshine_ocean.mp4" type="video/mp4">
@@ -289,10 +437,15 @@ body, html{
     <div class="yacht-content">
       <div class="yacht-title">Lady Sunshine</div>
       <div class="yacht-subtitle">Luxury yacht for private charters and island trips</div>
+      <div class="yacht-details">
+        <span><i class="fas fa-users"></i> Up to 12 guests</span>
+        <span><i class="fas fa-clock"></i> From €950</span>
+      </div>
       <a href="lady-sunshine.html" class="button">Explore</a>
     </div>
   </div>
 
+  <!-- Champagne -->
   <div class="yacht-card">
     <video autoplay muted loop playsinline poster="champagne_1.jpg">
       <source src="champagne_ocean.mp4" type="video/mp4">
@@ -300,10 +453,15 @@ body, html{
     <div class="yacht-content">
       <div class="yacht-title">Champagne</div>
       <div class="yacht-subtitle">Perfect motor boat for parties and sunset cruises</div>
+      <div class="yacht-details">
+        <span><i class="fas fa-users"></i> Up to 10 guests</span>
+        <span><i class="fas fa-clock"></i> From €400</span>
+      </div>
       <a href="champagne.html" class="button">Explore</a>
     </div>
   </div>
 
+  <!-- Armani -->
   <div class="yacht-card">
     <video autoplay muted loop playsinline poster="armani_1.jpg">
       <source src="armani_ocean.mp4" type="video/mp4">
@@ -311,6 +469,10 @@ body, html{
     <div class="yacht-content">
       <div class="yacht-title">Armani</div>
       <div class="yacht-subtitle">Compact luxury motor boat for private ocean experiences</div>
+      <div class="yacht-details">
+        <span><i class="fas fa-users"></i> Up to 6 guests</span>
+        <span><i class="fas fa-clock"></i> From €300</span>
+      </div>
       <a href="armani.html" class="button">Explore</a>
     </div>
   </div>
@@ -319,33 +481,65 @@ body, html{
 <!-- CONTACT SECTION -->
 <section class="contact-section" id="contact">
   <h2>Contact Ocean Peak</h2>
-  <p>📍 Puerto Colón, Costa Adeje, Tenerife</p>
-  <p>📞 +34 123 456 789</p>
-  <p>✉️ info@oceanpeak.com</p>
+  <div class="contact-info">
+    <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Puerto Colón, Costa Adeje, Tenerife</div>
+    <div class="contact-item"><i class="fas fa-phone-alt"></i> +34 123 456 789</div>
+    <div class="contact-item"><i class="fas fa-envelope"></i> info@oceanpeak.com</div>
+  </div>
   <div class="contact-map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2405.285521079353!2d-16.731222784232673!3d28.076442582526673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc41f99170d3c9b7%3A0x65855ee7e9db0f55!2sPuerto%20Col%C3%B3n!5e0!3m2!1sen!2ses!4v1600000000000!5m2!1sen!2ses" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2405.285521079353!2d-16.731222784232673!3d28.076442582526673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc41f99170d3c9b7%3A0x65855ee7e9db0f55!2sPuerto%20Col%C3%B3n!5e0!3m2!1sen!2ses!4v1600000000000!5m2!1sen!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </section>
 
-<a href="https://wa.me/XXXXXXXXXX" class="floating-whatsapp">📱</a>
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/XXXXXXXXXX" class="floating-whatsapp" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<footer>
+  <p>&copy; 2026 Ocean Peak. All rights reserved. | Designed with <i class="fas fa-heart" style="color: #d4af37;"></i> in Tenerife</p>
+  <p><a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
+</footer>
 
 <script>
-const burger = document.getElementById("burger");
-const menu = document.getElementById("menu");
+  // Burger menu functionality
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+  const menuLinks = document.querySelectorAll('.menu-overlay a');
 
-burger.addEventListener("click", () => {
-  burger.classList.toggle("open");
-  menu.classList.toggle("show");
-});
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    menu.classList.toggle('show');
+  });
 
-window.addEventListener("scroll", () => {
-  const navbar = document.getElementById("navbar");
-  if(window.scrollY > 50){
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
-});
+  // Close menu when clicking a link
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('open');
+      menu.classList.remove('show');
+    });
+  });
+
+  // Navbar background on scroll
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Smooth scroll for internal links (optional)
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
 </script>
 
 </body>
