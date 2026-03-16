@@ -431,6 +431,36 @@
         padding: 60px 20px;
       }
     }
+
+    /* Компактный вид для мобильных */
+@media (max-width: 600px) {
+  .specs-grid {
+    gap: 10px; /* уменьшаем расстояние между карточками */
+  }
+  
+  .spec-card {
+    padding: 12px 8px; /* менее толстые карточки */
+  }
+  
+  .spec-icon {
+    font-size: 1.5rem; /* иконки поменьше */
+    margin-bottom: 8px;
+  }
+  
+  .spec-label {
+    font-size: 0.75rem; /* чуть мельче подписи */
+  }
+  
+  .spec-value {
+    font-size: 1rem; /* основное значение тоже уменьшаем */
+    margin-top: 2px;
+  }
+  
+  /* Если хочешь еще плотнее — можно сделать 3 колонки */
+  /* .specs-grid {
+    grid-template-columns: repeat(3, 1fr);
+  } */
+}
   </style>
 </head>
 <body>
