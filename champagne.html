@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Champagne | Ocean Peak</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#0b0f14;
+color:white;
+line-height:1.5;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 20px;
+background:rgba(11,15,20,0.9);
+z-index:10;
+}
+
+.logo img{
+height:70px;
+}
+
+.home-btn{
+font-size:28px;
+text-decoration:none;
+color:#d4af37;
+}
+
+/* HERO VIDEO */
+
+.hero{
+height:100vh;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.hero video{
+position:absolute;
+top:50%;
+left:50%;
+min-width:100%;
+min-height:100%;
+transform:translate(-50%,-50%);
+object-fit:cover;
+filter:brightness(0.55);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+padding:20px;
+}
+
+.hero h1{
+font-size:38px;
+margin-bottom:5px;
+font-family:serif;
+color:#d4af37;
+}
+
+.hero h2{
+font-size:18px;
+font-weight:normal;
+margin-bottom:20px;
+}
+
+.cta{
+display:inline-block;
+padding:12px 25px;
+background:#d4af37;
+color:black;
+border-radius:25px;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* SECTION */
+
+.section{
+padding:40px 20px;
+max-width:900px;
+margin:auto;
+}
+
+.section h3{
+color:#d4af37;
+font-family:serif;
+font-size:26px;
+margin-bottom:15px;
+}
+
+/* SPECS */
+
+.specs{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+font-size:15px;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+}
+
+/* PRICES */
+
+.prices{
+margin-top:15px;
+}
+
+.price{
+display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+/* WHATSAPP BUTTON */
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+color:white;
+text-decoration:none;
+box-shadow:0 5px 10px rgba(0,0,0,0.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+<img src="logo.png">
+</div>
+
+<a class="home-btn" href="index.html">🏠</a>
+
+</header>
+
+
+<section class="hero">
+
+<video autoplay muted loop playsinline>
+<source src="champagne_ocean.mp4" type="video/mp4">
+</video>
+
+<div class="hero-content">
+<h1>Champagne</h1>
+<h2>Champagne is an elegant Sealine SC29 motor boat designed for stylish cruising along Tenerife’s southern coastline.
+Departing from Puerto Colón, guests can discover volcanic cliffs, sea caves and natural swimming spots while enjoying views of Mount Teide from the sea.</h2>
+<a class="cta" href="https://wa.me/XXXXXXXX">Book Now</a>
+</div>
+
+</section>
+
+
+<section class="section">
+<br>
+<br>
+<h3>Specifications</h3>
+
+<div class="specs">
+<div><b>Length</b><br>8.94 m</div>
+<div><b>Beam</b><br>3.16 m</div>
+
+<div><b>Capacity</b><br>8–10 guests</div>
+<div><b>Engine</b><br>Volvo 190 hp</div>
+
+<div><b>Cruising Speed</b><br>7 knots</div>
+<div><b>Max Speed</b><br>20 knots</div>
+
+<div><b>Flag</b><br>Spain</div>
+<div><b>Departure</b><br>Puerto Colón</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h3>The Experience</h3>
+
+<p>
+Champagne is an elegant Sealine SC29 motor boat designed for stylish cruising along Tenerife’s southern coastline.
+Departing from Puerto Colón, guests can discover volcanic cliffs, sea caves and natural swimming spots while enjoying views of Mount Teide from the sea.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<h3>What's Included</h3>
+
+<p>
+
+Professional crew<br>
+Fresh fruit and crudités<br>
+Open bar (wine, beer, soft drinks, water)<br>
+Snorkeling equipment<br>
+Swimming stop depending on weather conditions
+
+</p>
+
+</section>
+
+
+<section class="section">
+
+<h3>Charter Prices</h3>
+
+<div class="prices">
+
+<div class="price"><span>2 Hours</span><span>€400</span></div>
+<div class="price"><span>3 Hours</span><span>€500</span></div>
+<div class="price"><span>4 Hours</span><span>€650</span></div>
+<div class="price"><span>5 Hours</span><span>€800</span></div>
+<div class="price"><span>6 Hours</span><span>€950</span></div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h3>Gallery</h3>
+
+<div class="gallery">
+
+<img src="champagne_1.png">
+<img src="champagne_2.png">
+<img src="champagne_3.jpeg">
+<img src="champagne_4.jpeg">
+<img src="champagne_5.jpeg">
+<img src="champagne_6.jpeg">
+
+</div>
+
+</section>
+
+
+<a class="whatsapp" href="https://wa.me/XXXXXXXX">💬</a>
+
+</body>
+</html>

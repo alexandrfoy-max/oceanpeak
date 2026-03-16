@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ocean Peak | Private Yacht Charters Tenerife</title>
+<style>
+body, html{
+  margin:0;
+  padding:0;
+  font-family:Arial, Helvetica, sans-serif;
+  scroll-behavior:smooth;
+  color:white;
+  background:#0b0f14;
+}
+
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:10;
+  padding:15px 40px; /* чуть потоньше */
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition:background 0.5s, padding 0.3s;
+}
+.navbar.scrolled{
+  background:rgba(11,15,20,0.95);
+  padding:10px 40px;
+}
+.logo img{
+  height:100px;
+  transition: height 0.3s;
+}
+
+/* BURGER MENU */
+.menu-button{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  width:40px;
+  height:30px;
+  cursor:pointer;
+  z-index:20; /* выше видео */
+}
+
+.menu-button span{
+  display:block;
+  height:4px;
+  background:#d4af37; /* или белый */
+  border-radius:2px;
+  transition:all 0.5s;
+}
+.menu-button.open span:nth-child(1){
+  transform:rotate(45deg) translate(5px,5px);
+}
+.menu-button.open span:nth-child(2){
+  opacity:0;
+}
+.menu-button.open span:nth-child(3){
+  transform:rotate(-45deg) translate(5px,-5px);
+}
+
+/* MENU OVERLAY */
+.menu-overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(11,15,20,0.95);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:50px;
+  font-size:40px;
+  z-index:20;
+  transform:translateY(-100%);
+  transition:transform 0.5s;
+}
+.menu-overlay a{
+  color:white;
+  font-family:serif;
+  letter-spacing:3px;
+  transition:opacity 0.3s;
+}
+.menu-overlay a:hover{
+  opacity:0.7;
+}
+.menu-overlay.show{
+  transform:translateY(0);
+}
+
+/* HERO VIDEO */
+.hero-video{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+.hero-video video{
+  position:absolute;
+  top:50%;
+  left:50%;
+  min-width:100%;
+  min-height:100%;
+  transform:translate(-50%, -50%);
+  object-fit:cover;
+  transition: transform 0.5s ease;
+}
+.hero-video:hover video{
+  transform:translate(-50%, -50%) scale(1.05);
+}
+.overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.45);
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:900px;
+}
+.hero-title{
+  font-size:60px;
+  font-family:serif;
+  letter-spacing:3px;
+  color:#d4af37;
+  margin-bottom:20px;
+  text-shadow:0 2px 20px rgba(0,0,0,0.7);
+}
+.hero-subtitle{
+  font-size:24px;
+  margin-bottom:30px;
+}
+.button{
+  padding:15px 30px;
+  border-radius:30px;
+  background:#d4af37;
+  color:black;
+  font-weight:bold;
+  font-size:18px;
+  text-decoration:none;
+  transition: all 0.3s;
+}
+.button:hover{
+  box-shadow:0 0 20px #d4af37;
+  transform:scale(1.05);
+}
+
+/* YACHTS */
+.yacht-section{
+  padding:60px 0;
+}
+.yacht-card{
+  position:relative;
+  height:65vh;
+  margin-bottom:80px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  border-radius:15px;
+}
+.yacht-card video{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:auto;
+  height:80%;
+  min-width:100%;
+  min-height:100%;
+  object-fit:cover;
+  filter:brightness(0.5);
+  transform:translate(-50%, -50%);
+  transition:transform 0.6s;
+  border-radius:15px;
+}
+.yacht-card:hover video{
+  transform:translate(-50%, -50%) scale(1.05);
+}
+.yacht-content{
+  position:relative;
+  z-index:2;
+  max-width:700px;
+}
+.yacht-title{
+  font-size:50px;
+  font-family:serif;
+  color:#d4af37;
+  margin-bottom:20px;
+}
+.yacht-subtitle{
+  font-size:20px;
+  margin-bottom:30px;
+  line-height:1.6;
+}
+
+/* CONTACT SECTION */
+.contact-section{
+  padding:80px 20px;
+  background:#0b0f14;
+  text-align:center;
+}
+.contact-section h2{
+  color:#d4af37;
+  font-family:serif;
+  margin-bottom:20px;
+}
+.contact-section p{
+  margin:5px 0;
+  font-size:18px;
+}
+.contact-map{
+  margin-top:40px;
+  border:5px solid #d4af37;
+  border-radius:15px;
+  overflow:hidden;
+}
+
+/* WHATSAPP */
+.floating-whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  border-radius:50%;
+  width:60px;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  box-shadow:0 4px 8px rgba(0,0,0,0.3);
+  z-index:1000;
+}
+</style>
+</head>
+<body>
+
+<header class="navbar" id="navbar">
+  <div class="logo">
+    <img src="logo.png" alt="Ocean Peak">
+  </div>
+  <div class="menu-button" id="burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<div class="menu-overlay" id="menu">
+  <a href="#">Home</a>
+  <a href="#yachts">Yachts</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO VIDEO -->
+<section class="hero-video">
+  <video autoplay muted loop playsinline poster="hero_poster.jpg">
+    <source src="all_boats.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <div class="hero-title">Private Luxury Charters</div>
+    <div class="hero-subtitle">Explore Tenerife & the Canary Islands with Ocean Peak</div>
+    <a href="#yachts" class="button">Explore our fleet</a>
+  </div>
+</section>
+
+<!-- YACHTS SECTION -->
+<section class="yacht-section" id="yachts">
+  <div class="yacht-card">
+    <video autoplay muted loop playsinline poster="lady_1.jpg">
+      <source src="lady_sunshine_ocean.mp4" type="video/mp4">
+    </video>
+    <div class="yacht-content">
+      <div class="yacht-title">Lady Sunshine</div>
+      <div class="yacht-subtitle">Luxury yacht for private charters and island trips</div>
+      <a href="lady-sunshine.html" class="button">Explore</a>
+    </div>
+  </div>
+
+  <div class="yacht-card">
+    <video autoplay muted loop playsinline poster="champagne_1.jpg">
+      <source src="champagne_ocean.mp4" type="video/mp4">
+    </video>
+    <div class="yacht-content">
+      <div class="yacht-title">Champagne</div>
+      <div class="yacht-subtitle">Perfect motor boat for parties and sunset cruises</div>
+      <a href="champagne.html" class="button">Explore</a>
+    </div>
+  </div>
+
+  <div class="yacht-card">
+    <video autoplay muted loop playsinline poster="armani_1.jpg">
+      <source src="armani_ocean.mp4" type="video/mp4">
+    </video>
+    <div class="yacht-content">
+      <div class="yacht-title">Armani</div>
+      <div class="yacht-subtitle">Compact luxury motor boat for private ocean experiences</div>
+      <a href="armani.html" class="button">Explore</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section" id="contact">
+  <h2>Contact Ocean Peak</h2>
+  <p>📍 Puerto Colón, Costa Adeje, Tenerife</p>
+  <p>📞 +34 123 456 789</p>
+  <p>✉️ info@oceanpeak.com</p>
+  <div class="contact-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2405.285521079353!2d-16.731222784232673!3d28.076442582526673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc41f99170d3c9b7%3A0x65855ee7e9db0f55!2sPuerto%20Col%C3%B3n!5e0!3m2!1sen!2ses!4v1600000000000!5m2!1sen!2ses" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
+<a href="https://wa.me/XXXXXXXXXX" class="floating-whatsapp">📱</a>
+
+<script>
+const burger = document.getElementById("burger");
+const menu = document.getElementById("menu");
+
+burger.addEventListener("click", () => {
+  burger.classList.toggle("open");
+  menu.classList.toggle("show");
+});
+
+window.addEventListener("scroll", () => {
+  const navbar = document.getElementById("navbar");
+  if(window.scrollY > 50){
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+});
+</script>
+
+</body>
+</html>
